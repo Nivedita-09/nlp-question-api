@@ -6,9 +6,9 @@ RUN apt-get update
 
 COPY . /app
 WORKDIR /app
-
 # COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
+RUN nltk.download('stopwords')
 
 EXPOSE 8000
 
