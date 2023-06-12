@@ -7,7 +7,7 @@ from helper import query_point_creator
 model = pickle.load(open('model.pkl','rb'))
 app = Flask(__name__)
 
-@app.route("/", methods = ['POST'])
+@app.route("/")
 def Main():
     q1= request.form.get("Question1")
     q2 = request.form.get("Question2")
