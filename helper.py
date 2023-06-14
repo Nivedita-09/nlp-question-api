@@ -4,7 +4,8 @@ import distance
 from fuzzywuzzy import fuzz
 import pickle
 import numpy as np
-from nltk.corpus import stopwords
+import nltk
+from stop_words import get_stop_words
 
 cv = pickle.load(open('cv.pkl', 'rb'))
 
@@ -23,7 +24,8 @@ def test_total_words(q1, q2):
 
 def test_fetch_token_features(q1, q2):
     SAFE_DIV = 0.0001
-    STOP_WORDS = stopwords.words("english")
+    # STOP_WORDS = stopwords.words("english")
+    STOP_WORDS = get_stop_words('en') 
 
     token_features = [0.0] * 8
 
@@ -312,7 +314,7 @@ def query_point_creator(q1, q2):
     # fetch fuzzy features
     fuzzy_features = test_fetch_fuzzy_features(q1, q2)
     input_query.extend(fuzzy_features)
-    print(q1, q2)
+    
     # bow feature for q1
     q1_bow = cv.transform([q1]).toarray()
 

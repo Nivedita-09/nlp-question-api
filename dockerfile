@@ -7,6 +7,8 @@ RUN apt-get update
 COPY . /app
 WORKDIR /app
 # COPY requirements.txt requirements.txt
+RUN pip install --upgrade pip
+
 RUN pip3 install -r requirements.txt
 
 EXPOSE 8000
